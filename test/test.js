@@ -1,4 +1,4 @@
-import {Character, Bowman, Swordsman, Magician, Undead, Zombie, Daemon} from "../src/add";
+import {Character, Bowman} from "../src/add";
 
 test ("test charcter", () => {
 // тестирование объекта Character
@@ -21,33 +21,36 @@ test ("test charcter", () => {
   const expected2 = 25;
   expect(received2).toEqual(expected2);
 
-  let mad = new Magician("Mow");
-  const received3 = mad.defence;
-  const expected3 = 40;
+  bow.health = -1;
+  bow.damage(20);
+  const received3 = bow.health;
+  const expected3 = -1;
   expect(received3).toEqual(expected3);
 
-  let zp = new Zombie("zp");
-  const received4 = zp.type;
-  const expected4 = "Zombie";
+  bow.health = 70;
+  bow.levelUp();
+  const received4 = bow.health;
+  const expected4 = 100;
+  const received5 = bow.level;
+  const expected5 = 2
+  const received6 = bow.attack;
+  const expected6 = 30;
+  const received7 = bow.defence;
+  const expected7 = 30;
   expect(received4).toEqual(expected4);
-
-  let dae = new Daemon("Dae");
-  const received5 = dae.name;
-  const expected5 = "Dae";
   expect(received5).toEqual(expected5);
-
-  let sword = new Swordsman("Man");
-  sword.damage(50);
-  const received6 = sword.health;
-  const expected6 = 70;
   expect(received6).toEqual(expected6);
-
-  let un = new Undead("un");
-  un.damage(50);
-  const received7 = un.health;
-  const expected7 = 62.5;
   expect(received7).toEqual(expected7);
+
+  bow.health = 0;
+  bow.levelUp();
+  const received8 = bow.health;
+  const expected8 = 0;
+  expect(received8).toEqual(expected8);
 })
+
+  
+ 
 
 
 
